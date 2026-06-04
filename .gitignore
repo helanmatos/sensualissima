@@ -1,0 +1,17 @@
+# Next.js
+ecommerce/.next/
+ecommerce/out/
+ecommerce/node_modules/
+
+# Env
+.env
+.env.local
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "sensualissima",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "ecommerce", "run", "dev"],
+      "port": 3001,
+      "autoPort": false
+    }
+  ]
+}

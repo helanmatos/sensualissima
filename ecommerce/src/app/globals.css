@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom Properties — Design Tokens ─── */
+:root {
+  /* Cores de marca */
+  --color-borgonha:  #3D0A30;
+  --color-ouro:      #C9A96E;
+  --color-rosa-pale: #F0D9D0;
+  --color-creme:     #FAF5F0;
+  --color-malva:     #8B5E6D;
+
+  /* Neutros */
+  --color-carvao:  #1A1A1A;
+  --color-grafite: #4A4A4A;
+  --color-prata:   #9E9E9E;
+  --color-nevoa:   #E8E0DC;
+
+  /* Semânticas */
+  --bg-primary:   var(--color-creme);
+  --bg-secondary: var(--color-rosa-pale);
+  --text-primary: var(--color-carvao);
+  --text-brand:   var(--color-borgonha);
+  --text-accent:  var(--color-ouro);
+
+  /* Tipografia */
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-body:    var(--font-dm-sans), "Helvetica Neue", system-ui, sans-serif;
+
+  /* Animações */
+  --ease-sensual: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:     100ms;
+  --dur-normal:   200ms;
+  --dur-slow:     350ms;
+  --dur-reveal:   600ms;
+}
+
+/* ─── Base Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-creme);
+  color: var(--color-carvao);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ─── Tipografia base ─── */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* ─── Seleção de texto ─── */
+::selection {
+  background-color: rgba(61, 10, 48, 0.15);
+  color: var(--color-borgonha);
+}
+
+/* ─── Scrollbar personalizada ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-rosa-pale);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-malva);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-borgonha);
+}
+
+/* ─── Focus ring on-brand ─── */
+:focus-visible {
+  outline: 2px solid var(--color-ouro);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─── Utilitários de animação ─── */
+@layer utilities {
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+
+  .text-display {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .text-brand-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+
+  .text-label-upper {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .hover-image-zoom > img,
+  .hover-image-zoom > div > img {
+    transition: transform var(--dur-slow) var(--ease-sensual);
+  }
+  .hover-image-zoom:hover > img,
+  .hover-image-zoom:hover > div > img {
+    transform: scale(1.04);
+  }
+}
+
+/* ─── Componente: Button ─── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center;
+    @apply bg-borgonha-600 text-rosa-50;
+    @apply px-8 py-3.5;
+    @apply text-xs font-semibold tracking-widest uppercase;
+    @apply border-none rounded-sm;
+    @apply transition-all duration-200;
+    @apply cursor-pointer select-none;
+    font-family: var(--font-body);
+    transition-timing-function: var(--ease-sensual);
+  }
+  .btn-primary:hover  { @apply bg-borgonha-500; }
+  .btn-primary:active { @apply bg-borgonha-700; transform: translateY(1px); }
+  .btn-primary:disabled {
+    @apply bg-nevoa text-prata cursor-not-allowed opacity-60;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center;
+    @apply bg-transparent text-borgonha-600;
+    @apply px-8 py-3.5;
+    @apply text-xs font-semibold tracking-widest uppercase;
+    @apply border border-borgonha-600 rounded-sm;
+    @apply transition-all duration-200 cursor-pointer;
+    font-family: var(--font-body);
+    transition-timing-function: var(--ease-sensual);
+  }
+  .btn-outline:hover { background-color: rgba(61, 10, 48, 0.05); }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2;
+    @apply bg-transparent text-borgonha-600;
+    @apply text-sm font-medium;
+    @apply border-none p-0;
+    @apply cursor-pointer relative;
+    font-family: var(--font-body);
+  }
+  .btn-ghost::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-px bg-borgonha-600;
+    transition: width var(--dur-slow) var(--ease-sensual);
+  }
+  .btn-ghost:hover::after { @apply w-full; }
+}
