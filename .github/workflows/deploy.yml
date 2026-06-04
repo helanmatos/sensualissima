@@ -34,7 +34,7 @@ jobs:
         run: npm run build
         working-directory: ecommerce
         env:
-          NODE_ENV: production
+          NEXT_PUBLIC_BASE_PATH: /sensualissima
 
       - uses: actions/upload-pages-artifact@v3
         with:

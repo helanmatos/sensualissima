@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import Image from "@/components/Img";
 import Link from "next/link";
 import { ChevronRight, Star, Shield, RefreshCw, Truck } from "lucide-react";
 import { Header } from "@/components/Header";

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/Img";
 import Link from "next/link";
 import { ArrowRight, Package, RefreshCw, EyeOff, Star } from "lucide-react";
 import { Header } from "@/components/Header";
